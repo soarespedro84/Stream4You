@@ -62,10 +62,7 @@ div.error { background-color: red; color: white; padding: 3px; }
      </a>
          <a href="" class="css" title="Faculdade">
          Partilhas
-     </a>
-         <a href="" class="css" title="Faculdade">
-         Acessos
-     </a>
+     </a>     
    </div>
    <!-- end menu -->
    <!-- start page -->
