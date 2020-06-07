@@ -63,6 +63,9 @@ div.error { background-color: red; color: white; padding: 3px; }
          <a href="" class="css" title="Faculdade">
          Partilhas
      </a>
+         <a href="" class="css" title="Faculdade">
+         Acessos
+     </a>
    </div>
    <!-- end menu -->
    <!-- start page -->
@@ -84,10 +87,6 @@ div.error { background-color: red; color: white; padding: 3px; }
 
     <!-- end sidebar -->
    </div>
-       <div >
-     <div >{{=response.flash or ''}}</div>
-     {{include}}
-    </div>
    <!-- end page -->
    <!-- start footer -->
    <div id="footer">

@@ -63,6 +63,10 @@ div.error { background-color: red; color: white; padding: 3px; }
          <a href="" class="css" title="Faculdade">
          Partilhas
      </a>
+       @auth.requires_membership('produtor')
+         <a href="" class="css" title="Faculdade">
+         Acessos
+     </a>
    </div>
    <!-- end menu -->
    <!-- start page -->
