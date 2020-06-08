@@ -155,15 +155,17 @@ if configuration.get('scheduler.enabled'):
 # auth.enable_record_versioning(db)
 
 #---------tabela Videos----------
-Videos = db.define_table('videos',
-    Field('user_id', 'reference auth_user', label='Produtor'),
+Videos = db.define_table('Videos',
+    Field('autor', 'reference auth_user', label='Produtor'),
     Field('titulo', 'string', label='Título'),
     Field('descritivo', 'string', label='Descritivo'),
-    Field('acesso', requires = IS_IN_SET (['Guest', 'Produtor'])),
+    Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
     Field('dtCriacao', 'datetime', label='Data de Criação'),
     Field('visualizacoes', 'integer', label='Visualizações'),
-    Field('estado', requires = IS_IN_SET (['visivel', 'Oculto'])),
-    Field('anexo', 'upload', label='Anexo')
+    Field('group_id', 'reference auth_group', label='Subscrição')
+    Field('estado', 'integer', requires = IS_IN_SET (['visivel', 'Oculto'])),
+    Field('anexo', 'upload', label='Anexo'),
+    Field('imagem', 'upload', label='Capa' )
 )
 #---------tabela Partilha----------
 Partilha = db.define_table('Partilha',
