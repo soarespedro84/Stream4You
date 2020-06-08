@@ -155,19 +155,28 @@ if configuration.get('scheduler.enabled'):
 # auth.enable_record_versioning(db)
 
 #---------tabela Videos----------
-Videos = db.define_table('videos',
-    Field('user_id', 'reference auth_user', label='Produtor'),
+Videos = db.define_table('Videos',
+    Field('autor', 'reference auth_user', label='Produtor'),
     Field('titulo', 'string', label='Título'),
     Field('descritivo', 'string', label='Descritivo'),
-    Field('acesso', requires = IS_IN_SET (['Guest', 'Produtor'])),
+    Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
     Field('dtCriacao', 'datetime', label='Data de Criação'),
     Field('visualizacoes', 'integer', label='Visualizações'),
-    Field('estado', requires = IS_IN_SET (['visivel', 'Oculto'])),
-    Field('anexo', 'upload', label='Anexo')
+    Field('group_id', 'reference auth_group', label='Subscrição'),
+    Field('estado', 'integer', requires = IS_IN_SET (['visivel', 'Oculto'])),
+    Field('anexo', 'upload', label='Anexo'),
+    Field('imagem', 'upload', label='Capa')
 )
 #---------tabela Partilha----------
+<<<<<<< HEAD
+Partilha = db.define_table('Partilha',
+    Field('video', 'reference Videos', label='Video'),
+    Field('user_id', 'reference auth_user', label='User'),
+    Field('permissao', 'integer', label='Permissão')
+=======
 Visualizacao = db.define_table('visualizacao',
     Field('guest', 'reference auth_user', label='User'),
     Field('video', 'reference Video', label='Video'),
     Field('nr_visualizacoes', 'integer', label='Nr. Visualizações')
+>>>>>>> 2484812e277c7045519d22b227d5bca34c692909
     )
