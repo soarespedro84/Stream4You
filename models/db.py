@@ -162,14 +162,14 @@ Videos = db.define_table('Videos',
     Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
     Field('dtCriacao', 'datetime', label='Data de Criação'),
     Field('visualizacoes', 'integer', label='Visualizações'),
-    Field('group_id', 'reference auth_group', label='Subscrição')
+    Field('group_id', 'reference auth_group', label='Subscrição'),
     Field('estado', 'integer', requires = IS_IN_SET (['visivel', 'Oculto'])),
     Field('anexo', 'upload', label='Anexo'),
-    Field('imagem', 'upload', label='Capa' )
+    Field('imagem', 'upload', label='Capa')
 )
 #---------tabela Partilha----------
 Partilha = db.define_table('Partilha',
-    Field('video', 'reference videos', label='Video'),
+    Field('video', 'reference Videos', label='Video'),
     Field('user_id', 'reference auth_user', label='User'),
     Field('permissao', 'integer', label='Permissão')
     )
