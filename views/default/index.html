@@ -31,13 +31,7 @@
           <i class="fa fa-cog"></i>
           {{=T("admin")}}
         </a>
-        <a class="btn btn-secondary" href="{{=URL('examples','default','index')}}">{{=T("Online examples")}}</a>
-        <a class="btn btn-secondary" href="http://127.0.0.1:8000/stream4You/default/novo_video">Upload Video</a>
-        <a class="btn btn-secondary" href="http://127.0.0.1:8000/stream4You/default/listar_video">{{=T('Listar Vídeos')}}</a>
-        <a class="btn btn-secondary" href="{{=URL('default','api_get_user_email')}}">{{=T('API Example')}}</a>
-        <a class="btn btn-secondary" href="{{=URL('default','grid/auth_user')}}">{{=T('Grid Example')}}</a>
-        <a class="btn btn-secondary" href="{{=URL('default','wiki')}}">{{=T('Wiki Example')}}</a>
-      </div>
+
     </div>
     {{elif 'content' in globals():}}
     {{=content}}

@@ -63,7 +63,7 @@ def novo_video():
     form = SQLFORM(Videos)
     if form.process().accepted:
         session.flash = ' Novo Video registado: %s ' % form.vars.titulo
-        redirect(URL('novo_filme'))
+        redirect(URL('listar_video'))
     elif form.errors:
          response.flash = 'Erros no Formulário!'
     else:
