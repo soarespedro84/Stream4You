@@ -168,15 +168,8 @@ Videos = db.define_table('Videos',
     Field('imagem', 'upload', label='Capa')
 )
 #---------tabela Partilha----------
-<<<<<<< HEAD
-Partilha = db.define_table('Partilha',
-    Field('video', 'reference Videos', label='Video'),
-    Field('user_id', 'reference auth_user', label='User'),
-    Field('permissao', 'integer', label='Permissão')
-=======
 Visualizacao = db.define_table('visualizacao',
     Field('guest', 'reference auth_user', label='User'),
-    Field('video', 'reference Video', label='Video'),
+    Field('video', 'reference Videos', label='Video'),
     Field('nr_visualizacoes', 'integer', label='Nr. Visualizações')
->>>>>>> 2484812e277c7045519d22b227d5bca34c692909
     )
