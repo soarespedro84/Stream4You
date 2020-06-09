@@ -206,7 +206,7 @@ div.error_wrapper {
     background-color: #F9F9F9;
 }
 .web2py_grid tr:hover {
-    background-color: #F5F5F5;
+    background-color: #f90707;
 }
 .web2py_console form {
     width: 100%;

@@ -263,6 +263,7 @@
 'Stylesheet': 'Folha de estilo',
 'submit': 'submeter',
 'Submit': 'Submit',
+'Subscrição': 'Subscrição',
 'Support': 'Support',
 'Table': 'tabela',
 'The "query" is a condition like "db.table1.field1==\'value\'". Something like "db.table1.field1==db.table2.field2" results in a SQL JOIN.': 'A "query" é uma condição do tipo "db.table1.field1==\'value\'". Algo como "db.table1.field1==db.table2.field2" resultaria num SQL JOIN.',
