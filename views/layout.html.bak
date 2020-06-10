@@ -17,8 +17,7 @@ Description: Three-column blog design with the third column allocated for ads. F
     
     <link rel="stylesheet" href="{{=URL('static','css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap4.css')}}"/>
-    <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
-    <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+
      
      
   <title>
@@ -26,7 +25,7 @@ Description: Three-column blog design with the third column allocated for ads. F
   </title>
   {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Embouteillage/default.css'))}}
   {{response.files.append(URL('static','plugin_layouts/superfish.js'))}}
-  {{include 'web2py_ajax.html'}}
+ 
   <style>
 ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
 ul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}
@@ -45,7 +44,9 @@ div.error { background-color: red; color: white; padding: 3px; }
    <div id="header">
     <div id="logo">
      <h1>
+        <a class="titulo" href="http://127.0.0.1:8000/stream4You/default/listar_video">
       {{=response.title or request.application}}
+           </a>
      </h1>
      <p>
       <a>
@@ -74,18 +75,14 @@ div.error { background-color: red; color: white; padding: 3px; }
    </div>
    <!-- end menu -->
    <!-- start page -->
-   <div >
+   <div id="page">
     <!-- start ads -->
     <!-- end ads -->
     <!-- start content -->
-    <div >
+    <div class="web2py_htmltable" style="width:100%;overflow-x:auto;-ms-overflow-x:scroll">
     {{include}}
       {{=response.toolbar() if response.show_toolbar else ''}}
     </div>
-    <!-- end content -->
-    <!-- start sidebar -->
-
-    <!-- end sidebar -->
    </div>
    <!-- end page -->
    <!-- start footer -->

@@ -16,7 +16,7 @@ def api_get_user_email():
     return response.json({'status':'success', 'email':auth.user.email})
 
 # ---- Smart Grid (example) -----
-@auth.requires_membership('admin') # can only be accessed by members of admin groupd
+@auth.requires_membership('produtor') # can only be accessed by members of admin groupd
 def grid():
     response.view = 'generic.html' # use a generic view
     tablename = request.args(0)
