@@ -13,6 +13,7 @@ Description: Three-column blog design with the third column allocated for ads. F
 -->
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+    <meta charset="UTF-8" />
     <title>
       {{=response.title or request.application}}
     </title>
@@ -41,19 +42,15 @@ Description: Three-column blog design with the third column allocated for ads. F
     <div id="wrapper">
       <div id="header">
         <div id="logo">
-          <h1>
-            {{=response.title or request.application}}
-          </h1>
-          <p>
-            <a>
+          <a href="http://127.0.0.1:8000/stream4You/default/index">
+            <h1>
+              {{=response.title or request.application}}
+            </h1>
+            <p>
               a sua biblioteca de Vídeos!
-            </a>
-          </p>
+            </p></a
+          >
         </div>
-        <fieldset align="center">
-          <input type="text" name="s" id="s" size="10" value="" />
-          <input type="submit" id="x" value="Search" />
-        </fieldset>
       </div>
     </div>
     <!-- end header -->
@@ -83,13 +80,17 @@ Description: Three-column blog design with the third column allocated for ads. F
       >
         <i class="fa fa-cog"></i> Definições
       </a>
-      <a href="http://127.0.0.1:8000/admin/default/design/Stream4you">
+      <a href="http://127.0.0.1:8000/Stream4you/appadmin/index">
         <i class="fa fa-user-cog"></i> {{=T("admin")}}
       </a>
+      <fieldset align="end">
+        <input type="text" name="s" id="s" size="10" value="" />
+        <input type="submit" id="x" value="Search" />
+      </fieldset>
     </div>
     <!-- end menu -->
     <!-- start page -->
-    <div>
+    <div id="page">
       <!-- start content -->
       <div>
         <div>{{=response.flash or ''}}</div>
