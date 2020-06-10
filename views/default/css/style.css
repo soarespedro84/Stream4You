@@ -63,7 +63,7 @@ div.error {
 }
 
 body,
-#movies {
+section#movies {
   background-color: black;
 }
 .card:hover {

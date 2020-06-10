@@ -33,7 +33,7 @@ Description: Three-column blog design with the third column allocated for ads. F
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="bg-dark">
     <!-- start header -->
     {{try:}}{{=auth.navbar(action=URL('default','user'))}}{{except:pass}}
 
@@ -83,7 +83,10 @@ Description: Three-column blog design with the third column allocated for ads. F
       >
         <i class="fa fa-cog"></i> Definições
       </a>
-      <a href="http://127.0.0.1:8000/admin/default/design/Stream4you">
+      <a
+        class="btn btn-primary"
+        href="http://127.0.0.1:8000/admin/default/design/Stream4you"
+      >
         <i class="fa fa-user-cog"></i> {{=T("admin")}}
       </a>
     </div>
