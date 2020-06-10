@@ -1,3 +1,401 @@
 {{extend 'layout.html'}}
-<h1>This is the default/listar_video.html template</h1>
-{{=BEAUTIFY(response._vars)}}
+
+    <section id="movies">
+        <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12 text-left text-danger my-3">
+            <h2>Videos Recentes</h2>
+          </div>
+        </div>
+      </div>
+      <div id="movieCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row my-3">
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-white"
+                  >
+                    <a href=""
+                      ><img
+                        class="card-img-top"
+                        src="images/Capture.jpg"
+                        alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Planes</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-light"
+                  >
+                    <a href=""
+                      ><img class="card-img-top" src="images/arnold.jpg" alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Arnold</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-light"
+                  >
+                    <a href=""
+                      ><img class="card-img-top" src="images/china.jpg" alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">ChinaTown</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row my-3">
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-light"
+                  >
+                    <a href=""
+                      ><img class="card-img-top" src="images/topgun.jpg" alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Top Gun</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-light"
+                  >
+                    <a href=""
+                      ><img class="card-img-top" src="images/batman.jpg" alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Batman</h5>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div
+                    class="card border-danger text-center bg-dark text-light"
+                  >
+                    <a href=""
+                      ><img
+                        class="card-img-top"
+                        src="images/toystory.jpg"
+                        alt=""
+                    /></a>
+                    <div class="card-body">
+                      <h5 class="card-title">Toy Story</h5>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a
+          href="#movieCarousel"
+          class="carousel-control-prev"
+          data-slide="prev"
+        >
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a
+          href="#movieCarousel"
+          class="carousel-control-next"
+          data-slide="next"
+        >
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+   
+      <div class="container mt-5">
+        <div class="row">
+          <div class="col-md-12 text-left text-danger my-3">
+            <h2>Favoritos</h2>
+          </div>
+        </div>
+      </div>
+      <div id="favCarousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="container">
+              <div class="row my-3">
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/1917.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">1917</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/arnold.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Arnold</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/batman.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Batman</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/godfather.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Godfather</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/incep.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Inception</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/inter.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Interstellar</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row my-3">
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/china.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">ChinaTown</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/joker.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Joker</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/parasite.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Parasite</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/roma.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Roma</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/topgun.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Top Gun</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-2">
+                  <div
+                    class="card border-danger text-center bg-dark text-danger mb-3"
+                  >
+                    <img
+                      class="card-img-top"
+                      src="images/poster/toystory.jpg"
+                      alt=""
+                    />
+                    <div class="card-body">
+                      <h5 class="card-title">Toy Story</h5>
+                      <p><i class="fas fa-eye"> 255</i></p>
+                      <a
+                        class="btn btn-outline-danger btn-block"
+                        href="#"
+                        data-toggle="modal"
+                        ><i class="fas fa-play fa-2x"> </i
+                      ></a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="#favCarousel" class="carousel-control-prev" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#favCarousel" class="carousel-control-next" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    </section>
