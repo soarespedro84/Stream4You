@@ -80,7 +80,7 @@ Description: Three-column blog design with the third column allocated for ads. F
       >
         <i class="fa fa-cog"></i> Definições
       </a>
-      <a href="http://127.0.0.1:8000/Stream4you/appadmin/index">
+      <a href="http://127.0.0.1:8000/admin/design/stream4you">
         <i class="fa fa-user-cog"></i> {{=T("admin")}}
       </a>
       <fieldset align="end">
@@ -92,10 +92,10 @@ Description: Three-column blog design with the third column allocated for ads. F
     <!-- start page -->
     <div id="page">
       <!-- start content -->
-      <div>
-        <div>{{=response.flash or ''}}</div>
-        {{include}}
-      </div>
+
+      <div>{{=response.flash or ''}}</div>
+      {{include}}
+
       <!-- end content -->
       <!-- start sidebar -->
 
