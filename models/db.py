@@ -155,6 +155,7 @@ if configuration.get('scheduler.enabled'):
 # auth.enable_record_versioning(db)
 
 #---------tabela Videos----------
+<<<<<<< HEAD
 Videos = db.define_table('Videos',
     Field('autor', 'reference auth_user', label='Produtor'),
     Field('titulo', 'string', label='Título'),
@@ -166,6 +167,19 @@ Videos = db.define_table('Videos',
     Field('estado', 'integer', requires = IS_IN_SET (['visivel', 'Oculto'])),
     Field('anexo', 'upload', label='Anexo'),
     Field('imagem', 'upload', label='Capa')
+=======
+Videos = db.define_table('videos',
+    Field('autor', 'reference auth_user', label='Autor', writable=False, default = auth.user_id),
+    Field('titulo', 'string', length=128, label='Título'),
+    Field('descritivo', 'string', length=512, label='Descritivo'),
+    #Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
+    Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
+    Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
+    Field('categoria', 'reference categoria', label='Categoria'),
+    Field('estado', 'integer', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
+    Field('anexo', 'upload', label='Video file'),
+    Field('capa', 'upload', label='Capa')
+>>>>>>> parent of 2ded140... video controller
 )
 #---------tabela Partilha----------
 Visualizacao = db.define_table('visualizacao',
