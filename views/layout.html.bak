@@ -18,6 +18,7 @@ Description: Three-column blog design with the third column allocated for ads. F
   </title>
   {{response.files.append(URL(request.application,'static','plugin_layouts/layouts/Embouteillage/default.css'))}}
   {{response.files.append(URL('static','plugin_layouts/superfish.js'))}}
+<<<<<<< HEAD
   {{include 'web2py_ajax.html'}}
   <link rel="stylesheet" href="css/style.css">
       
@@ -34,6 +35,17 @@ Description: Three-column blog design with the third column allocated for ads. F
       integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
       crossorigin="anonymous"
     />
+=======
+ 
+  <style>
+ul.web2py-menu-vertical { width: 150px; position: relative; top:1em; left:1em;  z-index:30; border:0; margin:0; padding: 0; list-style: none; text-decoration: none;}
+ul.web2py-menu-vertical li { margin:0; padding:0; border:0; width: 150px; background: black; text-align:left;}
+ul.web2py-menu-vertical li a { margin:0; padding: 1px 3px 1px 3px; border:0; width: 144px; color: white; font-size:12px;}
+div.flash { position: fixed; float: right; padding: 10px; top: 10px; right: 30px; opacity: 0.75; margin: 10px 10px 10px 10px; text-align: center; clear: both; color: #fff; font-size: 11pt; text-align: center; vertical-align: middle; cursor: pointer; background: black; border: 2px solid #fff; -moz-border-radius: 5px; -webkit-border-radius: 5px; z-index: 2; }
+div.error { background-color: red; color: white; padding: 3px; }
+.auth_navbar { text-align:right; z-index:20; position: absolute; top: 2px; right:30px; border:0; padding:0 }
+  </style>
+>>>>>>> parent of 0271eb6... Vidios para testar streams
  </head>
  <body>
   <!-- start header -->

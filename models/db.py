@@ -169,11 +169,11 @@ Videos = db.define_table('Videos',
     Field('imagem', 'upload', label='Capa')
 =======
 Videos = db.define_table('videos',
-    Field('autor', 'reference auth_user', label='Autor', writable=False, default = auth.user_id),
+    Field('autor', 'reference auth_user', label='Autor'),
     Field('titulo', 'string', length=128, label='Título'),
     Field('descritivo', 'string', length=512, label='Descritivo'),
     #Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
-    Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
+    Field('dtCriacao', 'datetime', label='Data de Criação', default = request.now),
     Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
     Field('categoria', 'reference categoria', label='Categoria'),
     Field('estado', 'integer', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
