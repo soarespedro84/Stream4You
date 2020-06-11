@@ -177,13 +177,10 @@ Videos = db.define_table('videos',
     Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
     Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
     Field('categoria', 'reference categoria', label='Categoria'),
-    Field('estado', 'string', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
+    Field('estado', 'integer', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
     Field('anexo', 'upload', label='Video file'),
     Field('capa', 'upload', label='Capa')
 )
-
-#db.videos.categoria.represent = lambda cid, cid: cid.titulo
-
 #---------tabela Partilha----------
 Visualizacao = db.define_table('visualizacao',
     Field('guest', 'reference auth_user', label='User'),
