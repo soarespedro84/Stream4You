@@ -91,7 +91,23 @@ auth = Auth(db, host_names=configuration.get('host.names'))
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
+<<<<<<< HEAD
 auth.settings.extra_fields['auth_user'] = []
+=======
+
+#---------tabela Categoria----------
+Categoria = db.define_table('categoria',
+    Field('titulo', 'string', length=128, label='Título'),
+    Field('descritivo', 'string', length=512, label='Descritivo')
+)
+
+auth.settings.extra_fields['auth_user'] = [
+
+    # Lista dos subscrições do utilizador
+    Field('subscricao', 'list:reference categoria', label='Subscrições:', requires = IS_IN_DB(db, 'categoria.id', '%(titulo)s', multiple=True))
+]
+
+>>>>>>> parent of 97a11c3... 2 videos
 auth.define_tables(username=False, signature=False)
 
 # -------------------------------------------------------------------------
@@ -173,8 +189,8 @@ Videos = db.define_table('videos',
     Field('titulo', 'string', length=128, label='Título'),
     Field('descritivo', 'string', length=512, label='Descritivo'),
     #Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
-    Field('dtCriacao', 'datetime', label='Data de Criação', default = request.now),
-    Field('visualizacoes', 'integer', label='Visualizações', writable=False),
+    Field('dtCriacao', 'datetime', label='Data de Criação'),
+    Field('visualizacoes', 'integer', label='Visualizações'),
     Field('categoria', 'reference categoria', label='Categoria'),
     Field('estado', 'integer', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
     Field('anexo', 'upload', label='Video file'),
