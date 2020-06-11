@@ -124,8 +124,8 @@ auth.settings.registration_requires_verification = False
 auth.settings.registration_requires_approval = False
 auth.settings.reset_password_requires_verification = True
 
-# -------------------------------------------------------------------------  
-# read more at http://dev.w3.org/html5/markup/meta.name.html               
+# -------------------------------------------------------------------------
+# read more at http://dev.w3.org/html5/markup/meta.name.html
 # -------------------------------------------------------------------------
 response.meta.author = configuration.get('app.author')
 response.meta.description = configuration.get('app.description')
@@ -177,12 +177,10 @@ Videos = db.define_table('videos',
     Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
     Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
     Field('categoria', 'reference categoria', label='Categoria'),
-    Field('estado', 'string', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
+    Field('estado', 'integer', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
     Field('anexo', 'upload', label='Video file'),
     Field('capa', 'upload', label='Capa')
 )
-
-db.videos.categoria.represent = lambda cid, cid: cid.titulo
 
 #---------tabela Partilha----------
 Visualizacao = db.define_table('visualizacao',
