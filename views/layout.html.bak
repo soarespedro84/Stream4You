@@ -42,25 +42,28 @@
        </button>
        <div class="navbar-collapse collapse w-100" id="navbarNavDropdown">
          <ul class="navbar-nav w-100 justify-content-center">
-             
-         
-                            
+
           <li class="nav-item active">
-            <a class="nav-link" href="">Home</a>
+            <a class="nav-link" href="http://127.0.0.1:8000/stream4You/default/index">Home</a>
           </li>
+            {{if auth.is_logged_in():}}
+             
+             {{ if auth.has_membership(role = 'produtor'):}}
            <li class="nav-item active">
             <a class="nav-link" href="http://127.0.0.1:8000/stream4you/default/manage_videos">My Vídeos</a>
-          </li>       
-          
+          </li>
+              {{pass}}
+             {{ if auth.has_membership(role = 'admin'):}}
              <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin-Menu</a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="">Gerir Utilizador</a>
-              <a class="dropdown-item" href="">Gerir Grupos</a>
-              <a class="dropdown-item" href="">Gerir Categoria</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.auth_user.id%3E0">Gerir Utilizador</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.auth_group.id%3E0">Gerir Grupos</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.categoria.id%3E0">Gerir Categoria</a>
             </div>
+               {{pass}}
           </li>
-  
+            {{pass}}
         </ul>
          <form class="form-inline my-2 my-lg-0">
              <input class="form-control mr-sm-2" type="text" placeholder="Search">
