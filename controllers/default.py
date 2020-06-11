@@ -5,8 +5,6 @@
 # -------------------------------------------------------------------------
 
 # ---- example index page ----
-
-
 def index():
     response.flash = T("Hello World")
     return dict(message=T('Welcome to web2py!'))
@@ -14,32 +12,24 @@ def index():
 # ---- API (example) -----
 @auth.requires_login()
 def api_get_user_email():
-    if not request.env.request_method == 'GET':
-        raise HTTP(403)
-    return response.json({'status': 'success', 'email': auth.user.email})
+    if not request.env.request_method == 'GET': raise HTTP(403)
+    return response.json({'status':'success', 'email':auth.user.email})
 
 # ---- Smart Grid (example) -----
-# can only be accessed by members of admin groupd
-@auth.requires_membership('produtor')
+@auth.requires_membership('admin') # can only be accessed by members of admin groupd
 def grid():
-    response.view = 'generic.html'  # use a generic view
+    response.view = 'generic.html' # use a generic view
     tablename = request.args(0)
-    if not tablename in db.tables:
-        raise HTTP(403)
-    grid = SQLFORM.smartgrid(db[tablename], args=[
-                             tablename], deletable=False, editable=False)
+    if not tablename in db.tables: raise HTTP(403)
+    grid = SQLFORM.smartgrid(db[tablename], args=[tablename], deletable=False, editable=False)
     return dict(grid=grid)
 
 # ---- Embedded wiki (example) ----
-
-
 def wiki():
-    auth.wikimenu()  # add the wiki to the menu
+    auth.wikimenu() # add the wiki to the menu
     return auth.wiki()
 
 # ---- Action for login/register/etc (required for auth) -----
-
-
 def user():
     """
     exposes:
@@ -67,48 +57,7 @@ def download():
     """
     return response.download(request, db)
 
-# -------Novo Video--------
-@auth.requires_membership('produtor')
-def novo_video():
-    form = SQLFORM(Videos)
-    if form.process().accepted:
-        session.flash = ' Novo Video registado: %s ' % form.vars.titulo
-        redirect(URL('listar_video'))
-    elif form.errors:
-        response.flash = 'Erros no Formulário!'
-    else:
-        response.flash = 'Preencha o Formulário!'
-    return dict(form=form)
-
-# -------listar Video--------
-
-
-def listar_video():
+#-------Gerir Videos--------
+def manage_videos():
     grid = SQLFORM.grid(Videos)
     return dict(grid=grid)
-
-# -------Editar Video--------
-
-
-def editar_video():
-    form = SQLFORM(Videos, request.args(0, cast=int),
-                   showid=False, submit_button='Gravar',
-                   readonly=False, deletable=True)
-    if form.process().accepted:
-        session.flash = 'Video atualizado: %s' % form.vars.titulo
-        redirect(URL('listar_video'))
-    elif form.errors:
-        response.flash = 'Erros no formulário!'
-    else:
-        if not response.flash:
-            response.flash = 'Preencha o formulário!'
-    return dict(form=form)
-
-# -------Apagar Video--------
-
-
-def apagar_video():
-    record = db.Videos(request.args(0, cast=int))
-    db(Videos.id == request.args(0, cast=int)).delete()
-    session.flash = 'Video %s apagado!' % record.titulo
-    redirect(URL('listar_video'))

@@ -57,42 +57,7 @@ def download():
     """
     return response.download(request, db)
 
-#-------Novo Video--------
-@auth.requires_membership('produtor')
-def novo_video():
-    form = SQLFORM(Videos)
-    if form.process().accepted:
-        session.flash = ' Novo Video registado: %s ' % form.vars.titulo
-        redirect(URL('listar_video'))
-    elif form.errors:
-         response.flash = 'Erros no Formulário!'
-    else:
-         response.flash = 'Preencha o Formulário!'
-    return dict(form=form)
-
 #-------listar Video--------
-def listar_video():
+def manage_videos():
     grid = SQLFORM.grid(Videos)
     return dict(grid=grid)
-
-#-------Editar Video--------
-def editar_video():
-    form = SQLFORM(Videos, request.args(0, cast=int),
-                   showid=False, submit_button='Gravar',
-                   readonly=False, deletable=True)
-    if form.process().accepted:
-        session.flash = 'Video atualizado: %s' % form.vars.titulo
-        redirect(URL('listar_video'))
-    elif form.errors:
-        response.flash = 'Erros no formulário!'
-    else:
-        if not response.flash:
-            response.flash = 'Preencha o formulário!'
-    return dict(form=form)
-
-#-------Apagar Video--------
-def apagar_video():
-    record = db.Videos(request.args(0, cast=int))
-    db(Videos.id==request.args(0, cast=int)).delete()
-    session.flash = 'Video %s apagado!' % record.titulo
-    redirect(URL('listar_video'))
