@@ -115,7 +115,7 @@ select.autocomplete {
     background: url(../images/background.jpg) no-repeat center center;
 }
 body {
-    margin-bottom: 1111px;
+    margin-bottom: 60px;
 }
 header {
     -webkit-box-shadow: 0 0 8px 2px #000;
@@ -206,7 +206,7 @@ div.error_wrapper {
     background-color: #F9F9F9;
 }
 .web2py_grid tr:hover {
-    background-color: #f90707;
+    background-color: #F5F5F5;
 }
 .web2py_console form {
     width: 100%;

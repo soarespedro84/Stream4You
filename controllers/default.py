@@ -8,8 +8,8 @@
 
 
 def index():
-    response.flash = T("Welcome")
-    return dict(message=T('Welcome to Stream4You!'))
+    response.flash = T("Hello World")
+    return dict(message=T('Welcome to web2py!'))
 
 # ---- API (example) -----
 @auth.requires_login()

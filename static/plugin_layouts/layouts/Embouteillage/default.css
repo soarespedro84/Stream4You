@@ -7,7 +7,7 @@ Released for free under a Creative Commons Attribution 2.5 License
 body {
 	margin: 0;
 	padding: 0;
-	background: #dc3545 url(images/img01.jpg) repeat-x left top;
+	background: #151515 url(images/img01.jpg) repeat-x left top;
 	text-align: justify;
 	font: 13px "Trebuchet MS", Arial, Helvetica, sans-serif;
 	color: #7F7772;
@@ -395,3 +395,4 @@ img.left {
 #footer a {
 	text-decoration: none;
 }
+

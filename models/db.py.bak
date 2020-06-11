@@ -91,20 +91,7 @@ auth = Auth(db, host_names=configuration.get('host.names'))
 # -------------------------------------------------------------------------
 # create all tables needed by auth, maybe add a list of extra fields
 # -------------------------------------------------------------------------
-
-#---------tabela Categoria----------
-Categoria = db.define_table('categoria',
-    Field('titulo', 'string', length=128, label='Título'),
-    Field('descritivo', 'string', length=512, label='Descritivo')
-)
-
-auth.settings.extra_fields['auth_user'] = [
-
-    # Lista dos subscrições do utilizador
-    Field('subscricao', 'list:reference categoria', label='Subscrições:', requires = IS_IN_DB(db, 'categoria.id', '%(titulo)s', multiple=True)),
-    Field('foto', 'upload', label='Foto', requires = IS_EMPTY_OR(IS_IMAGE()))
-]
-
+auth.settings.extra_fields['auth_user'] = []
 auth.define_tables(username=False, signature=False)
 
 # -------------------------------------------------------------------------
@@ -167,26 +154,22 @@ if configuration.get('scheduler.enabled'):
 # -------------------------------------------------------------------------
 # auth.enable_record_versioning(db)
 
-
 #---------tabela Videos----------
-Videos = db.define_table('videos',
-    Field('autor', 'reference auth_user', label='Autor', writable=False, default = auth.user_id),
-    Field('titulo', 'string', length=128, label='Título'),
-    Field('descritivo', 'string', length=512, label='Descritivo'),
-    #Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
-    Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
-    Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
-    Field('categoria', 'reference categoria', label='Categoria'),
-    Field('estado', 'string', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
-    Field('anexo', 'upload', label='Video file'),
-    Field('capa', 'upload', label='Capa')
+Videos = db.define_table('Videos',
+    Field('autor', 'reference auth_user', label='Produtor'),
+    Field('titulo', 'string', label='Título'),
+    Field('descritivo', 'string', label='Descritivo'),
+    Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
+    Field('dtCriacao', 'datetime', label='Data de Criação'),
+    Field('visualizacoes', 'integer', label='Visualizações'),
+    Field('group_id', 'reference auth_group', label='Subscrição'),
+    Field('estado', 'integer', requires = IS_IN_SET (['visivel', 'Oculto'])),
+    Field('anexo', 'upload', label='Anexo'),
+    Field('imagem', 'upload', label='Capa')
 )
-
-db.videos.categoria.represent = lambda cid, cid: cid.titulo
-
 #---------tabela Partilha----------
 Visualizacao = db.define_table('visualizacao',
     Field('guest', 'reference auth_user', label='User'),
-    Field('video', 'reference videos', label='Video'),
-    Field('nr_visualizacoes', 'integer', label='Nr.Visualizações')
-)
+    Field('video', 'reference Videos', label='Video'),
+    Field('nr_visualizacoes', 'integer', label='Nr. Visualizações')
+    )
