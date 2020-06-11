@@ -1,6 +1,39 @@
 {{extend 'layout.html'}}
 <h2>Video Review</h2>
-{{=BEAUTIFY(response._vars)}}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: -50px;">
+    <h1 class="display-4">Mais recentes</h1>
+</div>
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+
+        {{for vid in videos[0:3]:}}
+
+        <div class="card mb-4 shadow-sm">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{=vid.titulo}}</h4>
+            </div>
+            <img src="/Stream4you/default/download/{{=vid.capa}}" class="img-thumbnail img-fluid">
+            <div class="card-body">
+                
+                <p class="card-text">{{=vid.descritivo}}</p>
+                
+                <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
+                <br>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a href="">{{=vid.autor}}</a>
+                    </div>
+                    <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
+                </div>
+            </div>
+        </div>
+        {{pass}}
+        
+    </div>
+    <a href="categoria/0" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
+    
+</div>
 
 {{for cat in categorias:}}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: -50px;">
@@ -8,67 +41,32 @@
 </div>
 <div class="container">
     <div class="card-deck mb-3 text-center">
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Free</h4>
-            </div>
-            <img src="/Stream4you/default/download/videos.capa.abbf7fcc53311bc6.6d6f6e7374726f7366616e7461737469636f7330312e6a7067.jpg" class="img-thumbnail">
-            <div class="card-body">
-                
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                
-                <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</button>
-                <br>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="">Sergii Shtachenko</a>
-                    </div>
-                    <small class="text-muted">9 visualizações</small>
-                </div>
-            </div>
-        </div>
+
+        {{for vid in videos.find(lambda row: row.categoria == cat['id'])[0:3]:}}
 
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Free</h4>
+                <h4 class="my-0 font-weight-normal">{{=vid.titulo}}</h4>
             </div>
-            <img src="/Stream4you/default/download/videos.capa.abbf7fcc53311bc6.6d6f6e7374726f7366616e7461737469636f7330312e6a7067.jpg" class="img-thumbnail">
+            <img src="/Stream4you/default/download/{{=vid.capa}}" class="img-thumbnail card-img-top">
             <div class="card-body">
                 
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text">{{=vid.descritivo}}</p>
                 
-                <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</button>
+                <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
                 <br>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
-                        <a href="">Sergii Shtachenko</a>
+                        <a href="">{{=vid.autor}}</a>
                     </div>
-                    <small class="text-muted">9 visualizações</small>
+                    <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
                 </div>
             </div>
         </div>
-
-        <div class="card mb-4 shadow-sm">
-            <div class="card-header">
-                <h4 class="my-0 font-weight-normal">Free</h4>
-            </div>
-            <img src="/Stream4you/default/download/videos.capa.abbf7fcc53311bc6.6d6f6e7374726f7366616e7461737469636f7330312e6a7067.jpg" class="img-thumbnail">
-            <div class="card-body">
-                
-                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                
-                <button type="button" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</button>
-                <br>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="">Sergii Shtachenko</a>
-                    </div>
-                    <small class="text-muted">9 visualizações</small>
-                </div>
-            </div>
-        </div>        
+        {{pass}}
+        
     </div>
-    <button type="button" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</button>
+    <a href="categoria/{{=cat['id']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
 {{pass}}
