@@ -21,9 +21,6 @@
                 <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
                 <br>
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="">{{=vid.autor}}</a>
-                    </div>
                     <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
                 </div>
             </div>
@@ -31,7 +28,7 @@
         {{pass}}
         
     </div>
-    <a href="categoria/0" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
+    <a href="categoria/all" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
 
@@ -56,9 +53,6 @@
                 <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
                 <br>
                 <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                        <a href="">{{=vid.autor}}</a>
-                    </div>
                     <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
                 </div>
             </div>
@@ -66,7 +60,7 @@
         {{pass}}
         
     </div>
-    <a href="categoria/{{=cat['id']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
+    <a href="categoria/{{=cat['titulo']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
 {{pass}}

@@ -21,3 +21,18 @@ def review():
 
 
     return dict(categorias=categorias, videos=videos)
+
+
+@auth.requires_login()
+def categoria():
+    
+    if request.args(0) != 'all':
+        categoria  = db(Categoria.titulo == request.args(0)).select() #.first()
+        # Devolve vidios   com estado Visivel      da categoria *            ordenado pela data decrescente
+        videos = db(Videos.estado == 'Visivel' and Videos.categoria == categoria[0].id).select(orderby=~Videos.dtCriacao)
+    else:
+        # Devolve vidios   com estado Visivel       ordenado pela data decrescente
+        videos = db(Videos.estado == 'Visivel').select(orderby=~Videos.dtCriacao)
+    
+    
+    return dict(categoria=request.args(0),videos=videos)
