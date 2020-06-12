@@ -27,7 +27,7 @@ def grid():
 # ---- Embedded wiki (example) ----
 def wiki():
     auth.wikimenu() # add the wiki to the menu
-    return auth.wiki() 
+    return auth.wiki()
 
 # ---- Action for login/register/etc (required for auth) -----
 def user():
@@ -57,7 +57,11 @@ def download():
     """
     return response.download(request, db)
 
-#-------listar Video--------
+
+#-------Gerir Videos--------
+@auth.requires_login()
+@auth.requires_membership('produtor')
+@auth.requires_membership('admin')
 def manage_videos():
-    grid = SQLFORM.grid(Videos)
+    grid = SQLFORM.grid(Videos.autor == auth.user_id)
     return dict(grid=grid)
