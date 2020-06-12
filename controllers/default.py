@@ -57,7 +57,13 @@ def download():
     """
     return response.download(request, db)
 
+
 #-------Gerir Videos--------
+@auth.requires_login()
+
+@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership(
+'admin'))
+
 def manage_videos():
-    grid = SQLFORM.grid(Videos)
+    grid = SQLFORM.grid(Videos.autor == auth.user_id)
     return dict(grid=grid)

@@ -56,15 +56,13 @@
             <a class="nav-link dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin-Menu</a>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.auth_user.id%3E0">Gerir Utilizador</a>
-              <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.auth_group.id%3E0">Gerir Grupos</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.auth_membership.id%3E0">Gerir Grupos</a>
               <a class="dropdown-item" href="http://127.0.0.1:8000/Stream4you/appadmin/select/db?query=db.categoria.id%3E0">Gerir Categoria</a>
+              <a class="dropdown-item" href="http://127.0.0.1:8000/stream4you/default/manage_videos">Gerir Videos</a>
             </div>
               {{pass}}
           </li>
         </ul>
-         <form class="form-inline my-2 my-lg-0">
-             <input class="form-control mr-sm-2" type="text" placeholder="Search">
-         </form>
         {{if 'auth' in globals():}}
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li class="nav-item dropdown">
