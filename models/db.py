@@ -176,7 +176,8 @@ Videos = db.define_table('videos',
     Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
     Field('categoria', 'reference categoria', label='Categoria'),
     Field('estado', 'string', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
-    Field('anexo', 'upload', label='Video file'),
+    Field('anexo', 'upload', label='Video file low resolution'),
+    Field('anexo2', 'upload', label='Video file high resolution'),
     Field('capa', 'upload', label='Capa')
 )
 
