@@ -81,6 +81,9 @@ def ver():
     #Devolve videos do produtor
     sugestoes = db(Videos.estado == 'Visivel' and Videos.autor == produtor.id).select(orderby=~Videos.dtCriacao)
     
+    #Acrescentar 1 visualização
+    db(Videos.id == video.id).update(visualizacoes = video.visualizacoes + 1)
+    
     return dict(video=video, produtor=produtor, sugestoes=sugestoes)
 
 # SREAM low resolution
