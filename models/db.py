@@ -104,6 +104,8 @@ auth.settings.extra_fields['auth_user'] = [
     Field('foto', 'upload', label='Foto', requires = IS_EMPTY_OR(IS_IMAGE()))
 ]
 auth.define_tables(username=False, signature=False)
+custom_auth_table = db[auth.settings.table_user_name]
+custom_auth_table._format = '%(first_name)s %(last_name)s'
 
 # -------------------------------------------------------------------------
 # configure email
@@ -169,16 +171,16 @@ if configuration.get('scheduler.enabled'):
 #---------tabela Videos----------
 Videos = db.define_table('videos',
     Field('autor', 'reference auth_user', label='Autor', writable=False, default = auth.user_id),
-    Field('titulo', 'string', length=128, label='Título'),
+    Field('titulo', 'string', length=128, label='Título', requires=IS_NOT_EMPTY()),
     Field('descritivo', 'string', length=512, label='Descritivo'),
     #Field('acesso', 'integer', requires = IS_IN_SET (['Guest', 'Produtor'])),
     Field('dtCriacao', 'datetime', label='Data de Criação', writable=False, default = request.now),
     Field('visualizacoes', 'integer', label='Visualizações', writable=False, default = '0'),
-    Field('categoria', 'reference categoria', label='Categoria'),
+    Field('categoria', 'reference categoria', label='Categoria', requires=IS_NOT_EMPTY()),
     Field('estado', 'string', requires = IS_IN_SET (['Oculto', 'Visivel']), default='Visivel'),
-    Field('anexo', 'upload', label='Video file low resolution'),
+    Field('anexo', 'upload', label='Video file low resolution', requires=IS_NOT_EMPTY()),
     Field('anexo2', 'upload', label='Video file high resolution'),
-    Field('capa', 'upload', label='Capa')
+    Field('capa', 'upload', label='Capa', requires=IS_NOT_EMPTY())
 )
 
 #db.videos.categoria.represent = lambda cid, cid: cid.titulo
@@ -187,5 +189,5 @@ Videos = db.define_table('videos',
 Visualizacao = db.define_table('visualizacao',
     Field('guest', 'reference auth_user', label='User'),
     Field('video', 'reference videos', label='Video'),
-    Field('nr_visualizacoes', 'integer', label='Nr.Visualizações')
+    Field('dtVisualizacao', 'datetime', label='Data de visualização', writable=False, default = request.now)
 )

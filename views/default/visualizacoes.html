@@ -1,0 +1,48 @@
+{{extend 'layout.html'}}
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+        <div class="col-md-6">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{=video.titulo}}</h4>
+            </div>
+            <img src="/Stream4you/default/download/{{=video.capa}}" class="img-thumbnail card-img-top">
+            <div class="card-body">
+                
+                <p class="card-text">{{=video.descritivo}}</p>
+                
+                <a href="http://127.0.0.1:8000/stream4You/video/ver/{{=video.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
+                <br>
+                <div class="d-flex justify-content-between align-items-center">
+                    <small class="text-muted">{{=video.visualizacoes}} visualizações</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card-deck mb-3 text-center">
+
+        
+
+        <div class="col-md-6">
+            <table class="table">
+                <thead class="thead-light">
+                  <tr>
+                    <th>Visitante</th>
+                    <th>Data de visualização</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {{for vis in visualizacoes:}}
+                  <tr>
+                    <td>{{=vis.guest.first_name}} {{=vis.guest.last_name}}</td>
+                    <td>{{=vis.dtVisualizacao}}</td>
+                  </tr>
+                    {{pass}}
+                </tbody>
+              </table>
+
+        </div>
+        
+        
+    </div>
+    
+</div>

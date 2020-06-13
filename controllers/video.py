@@ -82,7 +82,11 @@ def ver():
     sugestoes = db(Videos.estado == 'Visivel' and Videos.autor == produtor.id).select(orderby=~Videos.dtCriacao)
     
     #Acrescentar 1 visualização
-    db(Videos.id == video.id).update(visualizacoes = video.visualizacoes + 1)
+    video.visualizacoes += 1
+    db(Videos.id == video.id).update(visualizacoes = video.visualizacoes)
+    
+    #Acrescentar registo de visualização
+    db.visualizacao.insert(guest=produtor.id, video=video.id, dtVisualizacao = request.now)
     
     return dict(video=video, produtor=produtor, sugestoes=sugestoes)
 
@@ -100,7 +104,7 @@ def streamerLow():
 
 # SREAM High resolution
 @auth.requires_login()
-def streamerHigh ():
+def streamerHigh():
     videos = db(Videos.id == request.args(0)).select()
     video = videos[0].anexo2
     import os

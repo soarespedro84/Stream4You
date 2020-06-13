@@ -31,10 +31,25 @@
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">{{=video.titulo}}</h4>
             </div>
-            <video controls autoplay controlsList="nodownload">
-                <source src="http://127.0.0.1:8000/stream4You/video/streamerLow/{{=video.id}}" type="video/mp4">                
-                <p>O seu browser não suporta HTML5 video. </p> 
+
+            <div class="dropdown" style="position: absolute; margin: 54px 0 -100px 0; z-index: 90;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
+                    Quality
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a href="#" onclick="changeQ('Low')">Low resolution</a></li>
+                    {{if video.anexo2:}}
+                    <li><a href="#" onclick="changeQ('High')">High resolution</a></li>
+                    {{pass}}
+                </ul>
+            </div>
+            <video id="player"
+                src="http://127.0.0.1:8000/stream4You/video/streamerLow/{{=video.id}}"
+                controls autoplay controlsList="nodownload">
+                <p>O seu browser não suporta HTML5 video. </p>
+                
             </video>
+
             <div class="card-body">
                 <p class="card-text">{{=video.descritivo}}</p>
                 <div class="d-flex justify-content-between align-items-center">
@@ -75,3 +90,45 @@
     <a href="produtor/{{=produtor.id}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
+
+
+<div class="dropdown" style="position: absolute; margin: 0 0 -100px 0;">
+    <button
+        class="btn btn-secondary dropdown-toggle"
+        type="button"
+        data-toggle="dropdown"
+    >
+        Quality
+    </button>
+    <ul class="dropdown-menu">
+        <li><a href="#" onclick="changeQ('Low resolution')">Low resolution</a></li>
+        <li><a href="#" onclick="changeQ('High resolution')">High resolution</a></li>
+    </ul>
+</div>
+<video
+    id="player"
+    src="videos/Trees_1080p.mp4"
+    controls
+    poster="img/mlogo.png"
+>
+    Your browser does not support HTML5 video.
+</video>
+
+<script type="text/javascript">
+    var map = {"High": "streamerHigh", "Low": "streamerLow" };
+
+    function changeQ(quality) {
+        $("#player").attr("src", "http://127.0.0.1:8000/stream4You/video/" + map[quality] + "/{{=video.id}}");
+
+        console.log($("#player").attr("src"));
+    }
+    var current_time;
+    $("#player").on("pause", function () {
+        current_time = this.currentTime;
+        console.log(current_time);
+    });
+    $("#player").on("play", function () {
+        this.currentTime = current_time;
+        console.log(current_time);
+    });
+</script>

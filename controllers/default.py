@@ -61,10 +61,22 @@ def download():
 
 #-------Gerir Videos--------
 @auth.requires_login()
-
-@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership(
-'admin'))
-
+@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
 def manage_videos():
-    grid = SQLFORM.grid(Videos.autor == auth.user_id)
+    #grid = SQLFORM.grid(Videos.autor == auth.user_id)
+    grid = SQLFORM.grid(Videos.autor == auth.user_id, links=[lambda row: A([SPAN(_class='icon magnifier icon-zoom-in glyphicon glyphicon-zoom-in'), ' Visualizações'], _class='button btn btn-default btn-secondary', _href=URL('visualizacoes',args=[row.id]))])
     return dict(grid=grid)
+
+
+#-------Visualizações--------
+@auth.requires_login()
+@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
+#@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
+def visualizacoes():
+    videos = db(Videos.id == request.args(0)).select()
+    video = videos[0]
+    
+    #visualizacoes = db(Visualizacao.video == request.args(0)).select()
+    visualizacoes = db(Visualizacao.guest == request.args(0)).select()
+    
+    return dict(video=video, visualizacoes=visualizacoes)
