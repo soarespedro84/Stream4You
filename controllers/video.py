@@ -2,6 +2,8 @@
 # tente algo como
 def index(): return dict(message=auth.user_id)
 
+
+#----PAGIAN REVIEW----
 @auth.requires_login()
 def review():
     # Devolve vidios   com estado Visivel       ordenado pela data decrescente
@@ -25,6 +27,7 @@ def review():
     return dict(categorias=categorias, videos=videos, produtor=produtor)
 
 
+#----PAGIAN CATEGORIAS----
 @auth.requires_login()
 def categoria():
     
@@ -39,6 +42,21 @@ def categoria():
     
     return dict(categoria=request.args(0),videos=videos)
 
+#----PAGIAN PRODUTOR----
+@auth.requires_login()
+def produtor():
+    
+    #Devolver produtores
+    produtores = db(db.auth_user.id == request.args(0)).select()
+    produtor = produtores[0]
+    
+    #Devolve videos do produtor
+    sugestoes = db(Videos.estado == 'Visivel' and Videos.autor == produtor.id).select(orderby=~Videos.dtCriacao)
+    
+    
+    return dict(produtor=produtor,sugestoes=sugestoes)
+
+#----PAGIAN PESQUISA----
 @auth.requires_login()
 def pesquisa():
 
@@ -48,9 +66,43 @@ def pesquisa():
         videos = db(Videos).select()
     return dict(videos=videos)
 
+
+#----PAGIAN VER VIDEO----
 @auth.requires_login()
 def ver():
-    filmes = db(Filmes.id == request.args(0)).select()
-    filme = filmes[0]
+    #Devolver viedo a ver
+    videos = db(Videos.id == request.args(0)).select()
+    video = videos[0]
     
-    return dict(filme=filme)
+    #Devolver produtores
+    produtores = db(db.auth_user.id == video.autor).select()
+    produtor = produtores[0]
+    
+    #Devolve videos do produtor
+    sugestoes = db(Videos.estado == 'Visivel' and Videos.autor == produtor.id).select(orderby=~Videos.dtCriacao)
+    
+    return dict(video=video, produtor=produtor, sugestoes=sugestoes)
+
+# SREAM low resolution
+@auth.requires_login()
+def streamerLow():
+    videos = db(Videos.id == request.args(0)).select()
+    video = videos[0].anexo
+    import os
+    path=os.path.join(request.folder,'uploads', video)
+    response.headers['ContentType']="video/mp4"
+
+
+    return response.stream(open(path,'rb'), chunk_size=4096)
+
+# SREAM High resolution
+@auth.requires_login()
+def streamerHigh ():
+    videos = db(Videos.id == request.args(0)).select()
+    video = videos[0].anexo2
+    import os
+    path=os.path.join(request.folder,'uploads', video)
+    response.headers['ContentType']="video/mp4"
+
+
+    return response.stream(open(path,'rb'), chunk_size=4096)
