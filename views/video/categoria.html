@@ -1,14 +1,14 @@
 {{extend 'layout.html'}}
 {{if categoria == 'all': categoria = 'Todos os Videos' }}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: -50px;">
-    <h1 class="display-4">{{=cat['titulo']}}</h1>
+    <h1 class="display-4">{{=categoria}}</h1>
 </div>
 <div class="container">
     <div class="card-deck mb-3 text-center">
 
-        {{for vid in videos.find(lambda row: row.categoria == cat['id'])[0:3]:}}
+        {{for vid in videos:}}
 
-        <div class="card mb-4 shadow-sm">
+        <div class="col-md-4">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">{{=vid.titulo}}</h4>
             </div>
@@ -27,6 +27,4 @@
         {{pass}}
         
     </div>
-    <a href="categoria/{{=cat['titulo']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
-    
 </div>
