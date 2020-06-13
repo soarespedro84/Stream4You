@@ -43,6 +43,7 @@
        <div class="navbar-collapse collapse w-100" id="navbarNavDropdown">
          <ul class="navbar-nav w-100 justify-content-center">
 
+             
           <li class="nav-item active">
             <a class="nav-link" href="http://127.0.0.1:8000/stream4You/default/index">Home</a>
           </li>
@@ -62,8 +63,19 @@
             </div>
               {{pass}}
           </li>
+             <li>
+               <form class="form-inline my-2 my-lg-0" action="http://127.0.0.1:8000/stream4you/video/pesquisar_titulo" method="get" >
+              <input name="_pesquisa" class="form-control mr-sm-2" type="text" size="30"  placeholder="Title Search">
+                   <input type='submit' value='Pesquisar'>
+              </form>
+             </li>                 
+ 
         </ul>
-        
+
+           
+         
+
+           
         {{if 'auth' in globals():}}
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li class="nav-item dropdown">
