@@ -2,23 +2,23 @@
 <h2>Video Review</h2>
 
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: -50px;">
-    <h1 class="display-4">Mais recentes</h1>
+    <h2 class="display-4">Mais recentes</h2>
 </div>
 <div class="container">
     <div class="card-deck mb-3 text-center">
 
-        {{for vid in videos[0:3]:}}
+        {{for vid in videos[0:4]:}}
 
         <div class="card mb-4 shadow-sm">
             <div class="card-header">
                 <h4 class="my-0 font-weight-normal">{{=vid.titulo}}</h4>
             </div>
-            <img src="/Stream4you/default/download/{{=vid.capa}}" class="img-thumbnail img-fluid">
+            <img src="/Stream4you/default/download/{{=vid.capa}}" class="img-thumbnail card-img-top">
             <div class="card-body">
                 
                 <p class="card-text">{{=vid.descritivo}}</p>
                 
-                <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
+                <a href="http://127.0.0.1:8000/stream4You/video/ver/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
                 <br>
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
@@ -28,7 +28,7 @@
         {{pass}}
         
     </div>
-    <a href="categoria/all" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
+    <a href="http://127.0.0.1:8000/stream4You/video/categoria/all" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
 
@@ -50,7 +50,7 @@
                 
                 <p class="card-text">{{=vid.descritivo}}</p>
                 
-                <a href="strim/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
+                <a href="http://127.0.0.1:8000/stream4You/video/ver/{{=vid.id}}" class="btn btn-lg btn-block btn-outline-secondary">Ver vídeo</a>
                 <br>
                 <div class="d-flex justify-content-between align-items-center">
                     <small class="text-muted">{{=vid.visualizacoes}} visualizações</small>
@@ -60,7 +60,35 @@
         {{pass}}
         
     </div>
-    <a href="categoria/{{=cat['titulo']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
+    <a href="http://127.0.0.1:8000/stream4You/video/categoria/{{=cat['titulo']}}" class="btn btn-light" style="margin-top: -50px;">Ver mais &rarr;</a>
     
 </div>
 {{pass}}
+
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center" style="margin-top: -50px;">
+    <h1 class="display-4">Os nosso produtores</h1>
+</div>
+<div class="container">
+    <div class="card-deck mb-3 text-center">
+
+        {{for prod in produtor:}}
+
+        <div class="col-lg-4 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <img
+                        style="margin-top: -50px;"
+                        src="/Stream4you/default/download/{{=prod.foto}}"
+                        alt=""
+                        class="img-fluid rounded-circle w-50 mb-3"
+                    />
+                    <h5>{{=prod.first_name}} {{=prod.last_name}}</h5>
+                    <div class="d-flex justify-content-center">
+                        <a href="http://127.0.0.1:8000/stream4You/video/produtor/{{=prod.id}}" class="btn btn-md btn-block btn-outline-secondary">Ver vídeos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{pass}}
+    </div>
+</div>
