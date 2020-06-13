@@ -36,7 +36,7 @@
     <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
     <!-- Navbar ======================================= -->
     <nav class="navbar navbar-light navbar-expand-md bg-faded bg-dark navbar-dark justify-content-center">
-        
+
         <a href="http://127.0.0.1:8000/Stream4you/default/index" class="navbar-brand d-flex w-50 mr-auto"> <i class=" fa fa-video-camera fa-2x mr-2 text-primary" > Stream4you</i></a>
        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
@@ -44,7 +44,7 @@
        <div class="navbar-collapse collapse w-100" id="navbarNavDropdown">
          <ul class="navbar-nav w-100 justify-content-center">
 
-             
+
           <li class="nav-item active">
             <a class="nav-link text-primary" href="http://127.0.0.1:8000/stream4You/default/index">Home</a>
           </li>
@@ -69,19 +69,22 @@
               <input name="_pesquisa" class="form-control mr-sm-2" type="text" size="30"  placeholder="Title Search">
                    <input type='submit' value='Pesquisar' class="btn btn-outline-primary">
               </form>
-             </li>                 
- 
+             </li>
         </ul>
 
-           
-         
-
-           
         {{if 'auth' in globals():}}
         <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
           <li class="nav-item dropdown">
-            <a   class="nav-link dropdown-toggle text-primary " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="fa fa-user text-primary" > </i>
-              {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
+            <a   class="nav-link dropdown-toggle text-primary " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">              
+                 {{if auth.user:}}
+                 <img
+                style="max-width: 35px; max-height: 35px;"
+                src="/Stream4you/default/download/{{=auth.user.foto}}"
+                alt=""
+                class="img-fluid rounded-circle"
+                />
+                  {{pass}}
+                {{if auth.user:}}{{=auth.user.first_name}}{{else:}}LOGIN{{pass}}
             </a>
             <div class="dropdown-menu dropdown-menu-right">
               {{if auth.user:}}
