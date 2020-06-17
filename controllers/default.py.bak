@@ -7,7 +7,7 @@
 # ---- example index page ----
 def index():
     if auth.is_logged_in():
-        redirect(URL('../../video/review'))    
+        redirect(URL('../../video/review'))
     return dict(message=T('Welcome!'))
 
 # ---- API (example) -----
@@ -71,12 +71,63 @@ def manage_videos():
 #-------Visualizações--------
 @auth.requires_login()
 @auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
-#@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
 def visualizacoes():
     videos = db(Videos.id == request.args(0)).select()
     video = videos[0]
     
-    #visualizacoes = db(Visualizacao.video == request.args(0)).select()
-    visualizacoes = db(db.auth_user.id == Visualizacao.guest).select()
-    
+    visualizacoes = db(Visualizacao.video == request.args(0)).select()
+
     return dict(video=video, visualizacoes=visualizacoes)
+
+
+def chart():
+    dados_chart="[{name: 'Batata', y: 12},{name: 'Tomate', y: 8},{name: 'Mamão', y: 12}]" #Change this dynamically
+    dados_map={}
+    dados_map["dados"]=dados_chart
+    chart=" 
+    <script type='text/javascript'>
+                Highcharts.setOptions({
+                    lang:{
+                    downloadJPEG: 'Download em imagem JPG',
+                    downloadPDF: 'Download em documento PDF',
+                    downloadPNG: 'Download em imagem PNG',
+                    downloadSVG: 'Download em vetor SVG',
+                    loading: 'Lendo...',
+                    noData: 'Sem dados para mostrar',
+                    printChart: 'Imprimir Gráfico',
+                    }
+                    });
+
+                    // Build the chart
+                    $('#chart').highcharts({
+                        chart: {
+                            plotBackgroundColor: null,
+                            plotBorderWidth: null,
+                            plotShadow: false,
+                            type: 'pie'
+                        },
+                        title: {
+                            text: 'Meu Gráfico'
+                },
+                    tooltip: {
+                        pointFormat: '{series.name}: <b>{point.percentage:.1f}%%</b>'
+                    },
+                    plotOptions: {
+                        pie: {
+                            allowPointSelect: true,
+                            cursor: 'pointer',
+                            dataLabels: {
+                                enabled: false
+                            },
+                            showInLegend: true
+                        }
+                    },
+                    credits:{enabled:false},
+                    series: [{
+                        name: 'Vendar por porcentagem',
+                        colorByPoint: true,
+                            data: %(dados)s
+                            }]
+                        });
+                </script> " %dados_map
+    return dict(chart=XML(chart))

@@ -7,7 +7,7 @@
 # ---- example index page ----
 def index():
     if auth.is_logged_in():
-        redirect(URL('../../video/review'))    
+        redirect(URL('../../video/review'))
     return dict(message=T('Welcome!'))
 
 # ---- API (example) -----
@@ -71,12 +71,10 @@ def manage_videos():
 #-------Visualizações--------
 @auth.requires_login()
 @auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
-#@auth.requires(lambda: auth.has_membership('produtor') or auth.has_membership('admin'))
 def visualizacoes():
     videos = db(Videos.id == request.args(0)).select()
     video = videos[0]
     
-    #visualizacoes = db(Visualizacao.video == request.args(0)).select()
-    visualizacoes = db(Visualizacao.guest == request.args(0)).select()
-    
+    visualizacoes = db(Visualizacao.video == request.args(0)).select()
+
     return dict(video=video, visualizacoes=visualizacoes)

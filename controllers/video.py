@@ -90,7 +90,7 @@ def ver():
     
     return dict(video=video, produtor=produtor, sugestoes=sugestoes)
 
-# SREAM low resolution
+# STREAM resolution
 @auth.requires_login()
 def streamerLow():
     videos = db(Videos.id == request.args(0)).select()
@@ -102,7 +102,7 @@ def streamerLow():
 
     return response.stream(open(path,'rb'), chunk_size=4096)
 
-# SREAM High resolution
+# STREAM High resolution
 @auth.requires_login()
 def streamerHigh():
     videos = db(Videos.id == request.args(0)).select()

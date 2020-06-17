@@ -36,15 +36,15 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown">
                     Quality
                 </button>
-                <ul class="dropdown-menu">
-                    <li><a href="#" onclick="changeQ('Low')">Low resolution</a></li>
+                <ul class="dropdown-menu">                    
                     {{if video.anexo2:}}
                     <li><a href="#" onclick="changeQ('High')">High resolution</a></li>
+                    <li><a href="#" onclick="changeQ('Low')">Low resolution</a></li>
                     {{pass}}
                 </ul>
             </div>
             <video id="player"
-                src="http://127.0.0.1:8000/stream4You/video/streamerLow/{{=video.id}}"
+                src="http://127.0.0.1:8000/stream4You/video/streamerHigh/{{=video.id}}"
                 controls autoplay controlsList="nodownload">
                 <p>O seu browser não suporta HTML5 video. </p>
                 
